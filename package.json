@@ -1,6 +1,6 @@
 {
   "name": "gentle-hang-guard",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Stop hung bash commands in Pi / Gentle Shell: default timeout, dangerous-pattern guard and slow-command alerts for the parent and subagents.",
   "license": "MIT",
   "type": "module",

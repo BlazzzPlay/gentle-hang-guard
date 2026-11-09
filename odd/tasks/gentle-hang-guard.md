@@ -6,7 +6,7 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 ## Specs
 
 - S1 Origin: "gentle shek tiene un salvaguarda para evitar estos prosesos pegados?" — two real hangs in subagents: a bash script with a bare `wait` that also waited on a background `pocketbase serve` (~15 min), and `vitest run --root / …` scanning the whole filesystem (~23 min); neither was cut automatically.
-- S2 Repo: "en un repo nuevo como nuestro otro plugin revisa en engram" — same pattern as github.com/BlazzzPlay/gentle-canvas-tailscale (Pi extension, src/ + test/ with node --test, MIT, README, icon, Gentle Hub topics gentle-shell-package / gentle-shell-extension). Name: "gentle-hang-guard". Location /home/blazz/projects/gentle-hang-guard.
+- S2 Repo: "en un repo nuevo como nuestro otro plugin revisa en engram" — same pattern as github.com/BlazzzPlay/gentle-canvas-tailscale (Pi extension, src/ + test/ with node --test, MIT, README, icon, Gentle Hub topics gentle-shell-package / gentle-shell-extension). Name: "gentle-hang-guard". Location ~/projects/gentle-hang-guard.
 - S3 Scope v1 (user selected all three): "Tiempo máximo por defecto en bash" — if a bash call has no `timeout`, set a configurable default (e.g. 120 s); applies to parent and subagents.
 - S4 "Bloquear comandos peligrosos" — `--root /` (e.g. vitest), bare `wait` (no PIDs) when the same command starts background `&` jobs; block with a reason that suggests bash_background / waiting on explicit PIDs.
 - S5 "Aviso de comando lento" — when a bash call runs longer than N minutes (configurable), notify (in a subagent: reach the parent; in the parent: UI warning).
