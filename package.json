@@ -1,0 +1,22 @@
+{
+  "name": "gentle-hang-guard",
+  "version": "0.0.0",
+  "description": "Stop hung bash commands in Pi / Gentle Shell: default timeout, dangerous-pattern guard and slow-command alerts for the parent and subagents.",
+  "license": "MIT",
+  "type": "module",
+  "author": "Fabian Mendoza (https://github.com/BlazzzPlay)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BlazzzPlay/gentle-hang-guard.git"
+  },
+  "homepage": "https://github.com/BlazzzPlay/gentle-hang-guard#readme",
+  "bugs": {
+    "url": "https://github.com/BlazzzPlay/gentle-hang-guard/issues"
+  },
+  "keywords": ["pi-package", "gentle-shell", "bash", "timeout", "watchdog", "subagents"],
+  "files": ["extensions", "src", "assets/icon.svg", "README.md", "LICENSE"],
+  "pi": { "extensions": ["./extensions/hang-guard.ts"] },
+  "engines": { "node": ">=22" },
+  "scripts": { "test": "node --test test/*.test.js" },
+  "peerDependencies": { "@earendil-works/pi-coding-agent": "*" }
+}

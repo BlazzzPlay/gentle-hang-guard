@@ -1,0 +1,27 @@
+# gentle-hang-guard
+
+Pi / Gentle Shell extension that stops hung bash commands for the parent session and subagents.
+Interim complement to Gentle Shell's subagent stall watchdog (kills the whole child after 30 min with a tool in flight; parent bash has no default timeout).
+
+## Specs
+
+- S1 Origin: "gentle shek tiene un salvaguarda para evitar estos prosesos pegados?" — two real hangs in subagents: a bash script with a bare `wait` that also waited on a background `pocketbase serve` (~15 min), and `vitest run --root / …` scanning the whole filesystem (~23 min); neither was cut automatically.
+- S2 Repo: "en un repo nuevo como nuestro otro plugin revisa en engram" — same pattern as github.com/BlazzzPlay/gentle-canvas-tailscale (Pi extension, src/ + test/ with node --test, MIT, README, icon, Gentle Hub topics gentle-shell-package / gentle-shell-extension). Name: "gentle-hang-guard". Location /home/blazz/projects/gentle-hang-guard.
+- S3 Scope v1 (user selected all three): "Tiempo máximo por defecto en bash" — if a bash call has no `timeout`, set a configurable default (e.g. 120 s); applies to parent and subagents.
+- S4 "Bloquear comandos peligrosos" — `--root /` (e.g. vitest), bare `wait` (no PIDs) when the same command starts background `&` jobs; block with a reason that suggests bash_background / waiting on explicit PIDs.
+- S5 "Aviso de comando lento" — when a bash call runs longer than N minutes (configurable), notify (in a subagent: reach the parent; in the parent: UI warning).
+- S6 Issue: "Sí, junto al plugin"; "para el Issue para Gentle Shell recuerda revisa si hay algo acierto o cerrado, pero creamoremos el nuestro propio" — own issue in Gentleman-Programming/gentle-shell citing related #1034 #1070 #1323 #1562 #2676; asks for a default bash timeout and current-tool elapsed time in subagent_status. Draft only; publish only with explicit OK.
+- S7 Timing/decision: "Plugin + issue, como acordamos (recomendado)" after T13/T14 of the bingo.
+
+## Tasks
+
+- [ ] T1 S2 inline — scaffold repo, feature doc — commit: 
+- [ ] T2 S3 S4 S5 worker — src libs (config, patterns, timers) + extension + node tests + real pi load check — commit: 
+- [ ] T3 S2 — README (en + es), icon — commit: 
+- [ ] T4 S6 — issue draft (docs/issue-draft.md), not published — commit: 
+- [ ] T5 S2 — publish repo + topics + tag (needs explicit user OK) — commit: n/a
+
+## Log
+
+- L1 Context: hangs observed in web-bingo session (see web-bingo odd/tasks/bingo-mvp.md L29-L31).
+- L2 Gentle Shell findings: watchdog lib/agents-config.ts:110-111 (stall 4 min, tool stall 30 min, configurable in subagents.json, kills the whole child), agents-runner.ts:741; Pi bash `timeout` optional with no default (pi-coding-agent dist/core/tools/bash.js:30); hooks available: pi.on("tool_call") can mutate event.input / block; tool_execution_start/update; session events.
