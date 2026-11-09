@@ -19,7 +19,7 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 - [x] T2 S3 S4 S5 worker — src libs (config, patterns, timers) + extension + node tests + real pi load check — commit: 24f7d0c
 - [x] T3 S2 — README (en + es), icon — commit: 9cb190b
 - [x] T4 S6 — issue draft (docs/issue-draft.md), not published — commit: 4317909
-- [ ] T5 S2 — publish repo + topics + tag (needs explicit user OK) — commit: n/a
+- [x] T5 S2 — publish repo + topics + tag (needs explicit user OK) — commit: n/a (v0.1.0)
 
 ## Log
 
@@ -28,3 +28,4 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 - L3 T2 (24f7d0c): 44/44 node tests. Real pi run: default timeout cut "sleep 999" at 3 s; "npx vitest run --root / nothing" blocked; timeout kills backgrounded & jobs (pi bash spawns its own process group and killProcessTree on timeout). S5 partial: a subagent cannot reach the parent from an extension (Gentle Shell lib/agents-protocol.ts:431 forwards only "missing tools" notify messages); in children the alert is ui.notify (dropped) and the default timeout is the real stop. → goes into the issue (S6). Bare-wait block covered by unit tests only.
 - L4 T3 (9cb190b): READMEs en/es, icon, social preview SVG (GitHub upload needs a PNG for T5). T4 draft written in the same commit; search queries replaced with the real ones run by the parent; subagent_status format cited as extensions/gentle-agents.ts:504. T4 stays open until the hang experiment result is filled in.
 - L5 Experiment: worker hung on python sleep(2700) from 23:57:40; parent notified ~00:27:50 timed_out "stalled for 30 min with tool \"bash\" still running after: bash"; python process gone at 00:27:52. Draft complete (4317909), not published.
+- L6 Published: https://github.com/BlazzzPlay/gentle-hang-guard (public, tag v0.1.0, topics gentle-shell-package, gentle-shell-extension, pi-package, gentle-shell). Issue https://github.com/Gentleman-Programming/gentle-shell/issues/3040 created from feature_request form; requested form labels enhancement + status:needs-review did not appear on read-back (not retried). Social preview PNG must be uploaded in GitHub settings by the user.

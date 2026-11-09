@@ -69,7 +69,7 @@ El timeout por defecto solo completa un valor ausente. Para un único comando la
 
 - **También se matan los trabajos en segundo plano.** Pi ejecuta cada llamada a `bash` en su propio grupo de procesos y mata el árbol de procesos al vencer el timeout, así que los trabajos `&` que lanzó el comando mueren con él (verificado en una ejecución real de Pi).
 - **Los procesos que salen del grupo pueden escapar.** Lo que se separe con `setsid` o `nohup … & disown` puede sobrevivir al timeout. Sin probar.
-- **En los subagentes el aviso de comando lento no llega al agente principal.** El aviso usa `ui.notify`, y el runner de Gentle Shell hoy descarta los mensajes notify de un subagente. Dentro de los subagentes solo actúa el timeout por defecto. Un issue para Gentle Shell se enlazará aquí cuando se publique.
+- **En los subagentes el aviso de comando lento no llega al agente principal.** El aviso usa `ui.notify`, y el runner de Gentle Shell hoy descarta los mensajes notify de un subagente. Dentro de los subagentes solo actúa el timeout por defecto. Lo seguimos en Gentle Shell en [gentle-shell#3040](https://github.com/Gentleman-Programming/gentle-shell/issues/3040).
 
 ## Desarrollo
 

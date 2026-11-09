@@ -69,7 +69,7 @@ The default timeout only fills in a missing value. For a single long command (a 
 
 - **Background jobs are killed too.** Pi runs each `bash` call in its own process group and kills the process tree on timeout, so `&` jobs started by the command die with it (verified in a real Pi run).
 - **Processes that leave the group may escape.** Anything detached with `setsid` or `nohup … & disown` may survive the timeout. Untested.
-- **In subagents the slow alert does not reach the parent.** The alert uses `ui.notify`, and the Gentle Shell runner currently drops a child's notify messages. Inside subagents only the default timeout acts. An issue for Gentle Shell will be linked here once it is published.
+- **In subagents the slow alert does not reach the parent.** The alert uses `ui.notify`, and the Gentle Shell runner currently drops a child's notify messages. Inside subagents only the default timeout acts. Tracked upstream in [gentle-shell#3040](https://github.com/Gentleman-Programming/gentle-shell/issues/3040).
 
 ## Develop
 

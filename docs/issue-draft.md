@@ -1,5 +1,7 @@
 <!-- DRAFT — not published. Target: Gentleman-Programming/gentle-shell. Publish only with explicit OK. -->
 
+> Published as https://github.com/Gentleman-Programming/gentle-shell/issues/3040.
+
 # feat(agents): default bash timeout and current tool elapsed time in subagent_status
 
 ## Before submitting
@@ -59,7 +61,7 @@ Consequences: the watchdog is the only stop; when it fires it throws away the ch
 
 ## Interim workaround
 
-gentle-hang-guard — github.com/BlazzzPlay/gentle-hang-guard (to be published) — a Pi extension that adds a default `bash` timeout (120 s), blocks `--root /` and bare `wait` with `&` jobs, and warns on slow commands. In subagents its warning cannot reach the parent (see "Child notifications" above), so only the default timeout helps there.
+gentle-hang-guard — https://github.com/BlazzzPlay/gentle-hang-guard — a Pi extension that adds a default `bash` timeout (120 s), blocks `--root /` and bare `wait` with `&` jobs, and warns on slow commands. In subagents its warning cannot reach the parent (see "Child notifications" above), so only the default timeout helps there.
 
 ## Experiment: deliberately hung subagent
 
