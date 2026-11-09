@@ -63,12 +63,12 @@ gentle-hang-guard — github.com/BlazzzPlay/gentle-hang-guard (to be published) 
 
 ## Experiment: deliberately hung subagent
 
-> **TODO (parent fills in):** observed watchdog result.
+A subagent was deliberately told to run one foreground `bash` call without a `timeout`, with a command that only sleeps for 45 minutes.
 
-- Start time: 23:57:40
-- Command: TODO
-- Expected cut: ~30 min (tool stall budget), around 00:27:40
-- Observed cut time: TODO
-- Final `subagent_status` / card text: TODO
-- Status and error message: TODO
-- Conclusion: TODO
+- Start time: 23:57:40 (process confirmed running ~20 s later)
+- Command: `python3 -c "import time; time.sleep(2700)"`
+- Expected cut: ~30 min (`tool_stall_timeout_ms` default), around 00:27:40
+- Observed: the parent received the task notification at about 00:27:50 with status `timed_out`
+- Message: `stalled for 30 min with tool "bash" still running after: bash`
+- Process check at 00:27:52: the `python3 … time.sleep(2700)` process was gone (no orphan left)
+- Conclusion: the watchdog works as documented and cleans up the process, but only after 30 minutes and by ending the whole subagent task. Until then the parent sees nothing beyond `last: bash`, and all of the task's work is lost. A default per-command timeout would have ended only the command (as the interim plugin does), and an elapsed-time field would have made the hang visible much earlier.
