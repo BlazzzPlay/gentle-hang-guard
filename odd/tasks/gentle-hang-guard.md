@@ -15,7 +15,7 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 
 ## Tasks
 
-- [ ] T1 S2 inline — scaffold repo, feature doc — commit: 
+- [x] T1 S2 inline — scaffold repo, feature doc — commit: d136a07
 - [ ] T2 S3 S4 S5 worker — src libs (config, patterns, timers) + extension + node tests + real pi load check — commit: 
 - [ ] T3 S2 — README (en + es), icon — commit: 
 - [ ] T4 S6 — issue draft (docs/issue-draft.md), not published — commit: 
