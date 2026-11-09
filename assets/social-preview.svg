@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-label="gentle-hang-guard: stop hung bash commands in Pi and Gentle Shell">
+  <title>gentle-hang-guard</title>
+  <defs>
+    <radialGradient id="page" cx="0.2" cy="0.2" r="0.9">
+      <stop offset="0" stop-color="#2a1f4d"/>
+      <stop offset="0.7" stop-color="#0d0b17"/>
+    </radialGradient>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b1530"/>
+      <stop offset="1" stop-color="#0d0b17"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <linearGradient id="text" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+  <rect width="1280" height="640" fill="url(#page)"/>
+  <g transform="translate(96 170) scale(2.34375)">
+    <rect width="128" height="128" rx="28" fill="url(#bg)"/>
+    <path d="M64 18 L100 30 V60 C100 84 84 101 64 110 C44 101 28 84 28 60 V30 Z" fill="none" stroke="url(#accent)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M50 42 H78 M50 88 H78" stroke="#a78bfa" stroke-width="5" stroke-linecap="round"/>
+    <path d="M54 42 C54 56 74 58 74 65 C74 72 54 74 54 88 M74 42 C74 56 54 58 54 65 C54 72 74 74 74 88" fill="none" stroke="#a78bfa" stroke-width="4" stroke-linecap="round"/>
+    <path d="M58 84 C60 77 68 77 70 84 Z" fill="#22d3ee"/>
+    <circle cx="96" cy="96" r="15" fill="#0d0b17" stroke="#22d3ee" stroke-width="4"/>
+    <rect x="90" y="90" width="12" height="12" rx="2" fill="#22d3ee"/>
+  </g>
+  <g font-family="Inter, 'Segoe UI', system-ui, sans-serif">
+    <text x="468" y="270" font-size="64" font-weight="700" fill="#ece9f7" letter-spacing="-1">gentle-hang-<tspan fill="url(#text)">guard</tspan></text>
+    <text x="468" y="340" font-size="30" fill="#b9b3d1">Stop hung bash commands in Pi and Gentle Shell —</text>
+    <text x="468" y="382" font-size="30" fill="#b9b3d1">in the parent session and in subagents.</text>
+    <rect x="468" y="420" width="470" height="56" rx="12" fill="#ffffff" fill-opacity="0.07" stroke="#ffffff" stroke-opacity="0.13"/>
+    <text x="490" y="457" font-family="ui-monospace, Menlo, monospace" font-size="24" font-weight="600" fill="#ece9f7">timeout · block · slow alert</text>
+  </g>
+</svg>
