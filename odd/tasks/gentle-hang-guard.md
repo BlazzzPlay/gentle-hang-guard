@@ -18,7 +18,7 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 - [x] T1 S2 inline — scaffold repo, feature doc — commit: d136a07
 - [x] T2 S3 S4 S5 worker — src libs (config, patterns, timers) + extension + node tests + real pi load check — commit: 24f7d0c
 - [x] T3 S2 — README (en + es), icon — commit: 9cb190b
-- [ ] T4 S6 — issue draft (docs/issue-draft.md), not published — commit: 
+- [x] T4 S6 — issue draft (docs/issue-draft.md), not published — commit: 4317909
 - [ ] T5 S2 — publish repo + topics + tag (needs explicit user OK) — commit: n/a
 
 ## Log
@@ -27,3 +27,4 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 - L2 Gentle Shell findings: watchdog lib/agents-config.ts:110-111 (stall 4 min, tool stall 30 min, configurable in subagents.json, kills the whole child), agents-runner.ts:741; Pi bash `timeout` optional with no default (pi-coding-agent dist/core/tools/bash.js:30); hooks available: pi.on("tool_call") can mutate event.input / block; tool_execution_start/update; session events.
 - L3 T2 (24f7d0c): 44/44 node tests. Real pi run: default timeout cut "sleep 999" at 3 s; "npx vitest run --root / nothing" blocked; timeout kills backgrounded & jobs (pi bash spawns its own process group and killProcessTree on timeout). S5 partial: a subagent cannot reach the parent from an extension (Gentle Shell lib/agents-protocol.ts:431 forwards only "missing tools" notify messages); in children the alert is ui.notify (dropped) and the default timeout is the real stop. → goes into the issue (S6). Bare-wait block covered by unit tests only.
 - L4 T3 (9cb190b): READMEs en/es, icon, social preview SVG (GitHub upload needs a PNG for T5). T4 draft written in the same commit; search queries replaced with the real ones run by the parent; subagent_status format cited as extensions/gentle-agents.ts:504. T4 stays open until the hang experiment result is filled in.
+- L5 Experiment: worker hung on python sleep(2700) from 23:57:40; parent notified ~00:27:50 timed_out "stalled for 30 min with tool \"bash\" still running after: bash"; python process gone at 00:27:52. Draft complete (4317909), not published.
