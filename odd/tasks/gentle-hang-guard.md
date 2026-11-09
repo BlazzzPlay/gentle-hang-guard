@@ -16,7 +16,7 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 ## Tasks
 
 - [x] T1 S2 inline — scaffold repo, feature doc — commit: d136a07
-- [ ] T2 S3 S4 S5 worker — src libs (config, patterns, timers) + extension + node tests + real pi load check — commit: 
+- [x] T2 S3 S4 S5 worker — src libs (config, patterns, timers) + extension + node tests + real pi load check — commit: 24f7d0c
 - [ ] T3 S2 — README (en + es), icon — commit: 
 - [ ] T4 S6 — issue draft (docs/issue-draft.md), not published — commit: 
 - [ ] T5 S2 — publish repo + topics + tag (needs explicit user OK) — commit: n/a
@@ -25,3 +25,4 @@ Interim complement to Gentle Shell's subagent stall watchdog (kills the whole ch
 
 - L1 Context: hangs observed in web-bingo session (see web-bingo odd/tasks/bingo-mvp.md L29-L31).
 - L2 Gentle Shell findings: watchdog lib/agents-config.ts:110-111 (stall 4 min, tool stall 30 min, configurable in subagents.json, kills the whole child), agents-runner.ts:741; Pi bash `timeout` optional with no default (pi-coding-agent dist/core/tools/bash.js:30); hooks available: pi.on("tool_call") can mutate event.input / block; tool_execution_start/update; session events.
+- L3 T2 (24f7d0c): 44/44 node tests. Real pi run: default timeout cut "sleep 999" at 3 s; "npx vitest run --root / nothing" blocked; timeout kills backgrounded & jobs (pi bash spawns its own process group and killProcessTree on timeout). S5 partial: a subagent cannot reach the parent from an extension (Gentle Shell lib/agents-protocol.ts:431 forwards only "missing tools" notify messages); in children the alert is ui.notify (dropped) and the default timeout is the real stop. → goes into the issue (S6). Bare-wait block covered by unit tests only.
